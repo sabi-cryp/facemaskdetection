@@ -1,0 +1,24 @@
+version: '3'
+services:
+  app:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    ports:
+      - "8080:8080"  # Remplacez 8080 par le port de votre application
+    volumes:
+      - ./app:/app  # Assurez-vous d'ajuster le chemin si nécessaire
+    depends_on:
+      - db  # Si votre application dépend d'une base de données
+
+  db:
+    image: postgres:latest  # Utilisez l'image de la base de données que vous utilisez
+    environment:
+      POSTGRES_PASSWORD: example_password  # Remplacez par le mot de passe de votre base de données
+      POSTGRES_USER: example_user  # Remplacez par le nom d'utilisateur de votre base de données
+      POSTGRES_DB: example_db  # Remplacez par le nom de votre base de données
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+
+volumes:
+  postgres_data:
