@@ -1,0 +1,9 @@
+.idea
+.settings
+build
+*.class
+.classpath
+.gitignore
+.project
+local.properties
+proguard-rules.pro
