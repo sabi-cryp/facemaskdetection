@@ -1,0 +1,19 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: mon-app-deployment
+spec:
+  replicas: 3  # ajustez selon vos besoins
+  selector:
+    matchLabels:
+      app: mon-app
+  template:
+    metadata:
+      labels:
+        app: mon-app
+    spec:
+      containers:
+      - name: mon-app
+        image: nom_de_votre_image:tag  # Remplacez par le nom de votre image Docker et le tag
+        ports:
+        - containerPort: 8080  # Remplacez par le port de votre application
